@@ -1,9 +1,9 @@
 from django.urls import path
 
-from users.views import index
+from users.views import users
 
 urlpatterns = [
-    path('', index, name="index")
+    path('', users, name="users")
 ]
 
 

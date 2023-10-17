@@ -1,8 +1,8 @@
 from django.urls import path
 
-from posts.views import index, comments_menu
+from posts.views import posts_menu, comments_menu
 
 urlpatterns = [
-    path('posts/', index, name="index"),
+    path('', posts_menu, name="posts"),
     path('comments/', comments_menu, name="comment_menu")
 ]

@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from users.models import User
 
 
-def index(request):
-    return HttpResponse("Hello users")
+def users(request):
+    user = User.objects.all()
+    context = {'user': user}
+    return render(request, "users/user_list.html", context)

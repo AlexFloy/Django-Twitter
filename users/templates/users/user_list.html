@@ -1,10 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
-$END$
+     {% block content %}
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Users list</h6>
+        <ul class="list-group">
+            {% for users in user%}
+            <li>
+            <div class="d-flex text-body-secondary pt-3">
+                {% if users.profile_picture%}
+                    <img src="{{ users.profile_pictures.url }}" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="64" height="64" role="img" aria-label="Placeholder: 32x32">
+                {% else %}
+                    <img src="{% static 'img/sta.jpg' %}" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="64" height="64" role="img" aria-label="Placeholder: 32x32">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    {% if users.data_joined%}
+                        <span class="d-block">{{users.data_joined}}</span>
+                    {% endif %}
+                        <div class="d-flex justify-content-between">
+                          <strong class="text-gray-dark">{{users.user_name}}</strong>
+                          <a href="#">Follow</a>
+                        </div>
+                  </div>
+                {% endif %}
+            </div>
+            </li>
+            {% endfor %}
+<!--            <small class="d-block text-end mt-3">-->
+<!--                <a href="#">All suggestions</a>-->
+<!--            </small>-->
+        </ul>
+    </div>
+    {% endblock %}
 </body>
 </html>
