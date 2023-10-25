@@ -38,7 +38,7 @@
 </form>
 
     <ul>
-    {% for post in posts_menu %}
+    {% for user_name in posts_menu %}
         <li>{{ post.title }} - {{ post.user.user_name }}</li>
     {% empty %}
         <li>Немає постів для відображення.</li>
